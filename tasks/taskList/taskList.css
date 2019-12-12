@@ -1,0 +1,70 @@
+body {
+  background-color: cadetblue;
+}
+
+.title {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  color: rgba(18, 60, 123, 0.932);
+  text-shadow: 2px 2px 5px #8db6d8, 2px 2px 5px white, 2px 2px 5px white;
+}
+
+.task-module {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  margin-bottom: 20px;
+  border: 2px solid #7b5529;
+  box-shadow: 2px 2px 2px black;
+}
+
+.task-status,
+.task-description {
+  padding: 10px;
+}
+
+.task-module {
+  cursor: pointer;
+}
+
+.task-description {
+  background-color: #a0aaaf;
+}
+
+/****** MEDIA QUERIES ******/
+@media screen and (min-width: 600px) {
+  .page-wrapper {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .page-wrapper {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .page-wrapper {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .page-wrapper {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .page-wrapper {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .page-wrapper {
+    width: 50%;
+  }
+}
