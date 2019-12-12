@@ -14,9 +14,15 @@ body::after {
 input,
 select,
 textarea {
-  background-color: #acd2c5cc;
+  background-color: rgba(34, 36, 38, 0.1);
   opacity: 0.8;
   border-radius: 5%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline-color: #1894e8;
 }
 
 .title {
@@ -66,8 +72,9 @@ textarea {
   border-radius: 3%;
   box-shadow: 10px 10px 10px lightslategray, 15px 15px 15px lightslategray inset,
     -5px -5px 10px lightslategrey inset;
-  color: #0724ef;
+  color: rgba(0, 0, 0, 0.82);
   font-family: monospace;
+  text-shadow: 2px 2px 2px white;
 }
 
 .data-module {
@@ -82,20 +89,17 @@ textarea {
   padding: 2px;
   border: 2px gray outset;
   outline: gray outset;
-  color: #d7f701;
+  color: #d6d8c8;
+  text-shadow: 2px 2px 3px black;
   font-family: monospace;
 }
 
-.description-short-input:focus {
-  outline: none;
-}
-
 .description-short-input-valid:valid {
-  border: 3px solid rgb(40, 162, 199);
+  outline: 3px solid rgb(8, 158, 33);
 }
 
 .description-short-input-invalid:invalid {
-  border: 3px solid rgb(224, 24, 24);
+  outline: 3px solid rgb(224, 24, 24);
 }
 
 .required-info {
