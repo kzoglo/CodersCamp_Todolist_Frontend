@@ -1,3 +1,30 @@
 <div class="container">
-    <h1>login</h1>
+    <br>
+    <i class="fa fa-user"></i>
+    <br>
+    <br>
+    <br>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Email *</span>
+        </div>
+        <input type="email" class="form-control" id="email" aria-describedby="email">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Hasło *</span>
+        </div>
+        <input type="password" class="form-control" id="password" aria-describedby="password">
+    </div>
+
+    <br>
+    <button type="button" class="btn btn-dark" id="login-btn"> &nbsp;&nbsp;Zaloguj&nbsp;&nbsp;</button>
+    <br>
+    <br>
+    <div>Nie posiadasz konta? <span id="register-login">Zarejestruj się.</span></div>
+    <br>
+
+
+    <div>* pole wymagane</div>
 </div>

@@ -1,3 +1,7 @@
 <div class="container">
-    <h1>show</h1>
+    <i class="fa fa-vcard"></i>
+    <div>Imię : {{name}}</div>
+    <div>Nazwisko : {{surname}}</div>
+    <div>Email: {{email}}</div>
+    
 </div>
