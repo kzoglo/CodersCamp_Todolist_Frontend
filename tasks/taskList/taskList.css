@@ -12,10 +12,12 @@ body {
 
 .task-module {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 20% 68% 12%;
   margin-bottom: 20px;
   border: 2px solid #7b5529;
   box-shadow: 2px 2px 2px black;
+  cursor: pointer;
+  background-color: #a0aaaf;
 }
 
 .task-status,
@@ -23,12 +25,18 @@ body {
   padding: 10px;
 }
 
-.task-module {
-  cursor: pointer;
-}
-
 .task-description {
   background-color: #a0aaaf;
+}
+
+.deleteBtn {
+  justify-self: right;
+  align-self: center;
+  margin-right: 5%;
+  border: 1px solid #003cff;
+  background-color: #0083ff;
+  padding: 5px;
+  border-radius: 20%;
 }
 
 /****** MEDIA QUERIES ******/

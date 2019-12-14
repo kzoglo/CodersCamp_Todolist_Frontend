@@ -92,6 +92,7 @@ textarea:focus {
   color: #d6d8c8;
   text-shadow: 2px 2px 3px black;
   font-family: monospace;
+  cursor: pointer;
 }
 
 .description-short-input-valid:valid {

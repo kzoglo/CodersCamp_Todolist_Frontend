@@ -24,11 +24,20 @@ const renderTask = tasks => {
       <div class="task-module" data-id=${task._id}>
         <span style="background:${statusColor};" class="task-status">${status}</span>
         <span class="task-description">${task.descrShort}</span>
+        <span class='deleteBtn'>Usuń</span>
       </div>
     `;
   });
 
   return elementsArr.join('');
+};
+
+const deleteTask = async id => {
+  const erase = await fetch(`http://127.0.0.1:3000/api/tasks/${id}`, {
+    method: 'DELETE'
+  });
+  const deleted = await erase.json();
+  console.log(`Document has been deleted properly.`);
 };
 
 /****** FETCHING DATA ******/
@@ -61,7 +70,7 @@ window.addEventListener('keydown', e => {
   }
 });
 
-// Displays modal window with task's details
+// Displays modal window with task's details or erases a task
 tasksListContainer.addEventListener('click', e => {
   // Gets id of a clicked task and saves it's id on a modalWrapper element
   const id = e.target.parentElement.dataset.id;
@@ -72,49 +81,57 @@ tasksListContainer.addEventListener('click', e => {
     return document._id === id;
   });
 
-  // Assistive variables for setting values into a modal window
-  const startDate = new Date(taskDocument.dateStart);
-  const endDate = taskDocument.dateEnd
-    ? new Date(taskDocument.dateEnd)
-    : 'nieokreślone';
+  // Erases a task
+  if (e.target.classList.item(0) === 'deleteBtn') {
+    deleteTask(id);
+    tasksListContainer.removeChild(e.target.parentElement);
+  }
+  // Displays modal window with task's details
+  else {
+    // Assistive variables for setting values into a modal window
+    const startDate = new Date(taskDocument.dateStart);
+    const endDate = taskDocument.dateEnd
+      ? new Date(taskDocument.dateEnd)
+      : 'nieokreślone';
 
-  const descrLongRender = taskDocument.descrLong
-    ? `${taskDocument.descrLong}`
-    : 'Brak opisu zadania';
+    const descrLongRender = taskDocument.descrLong
+      ? `${taskDocument.descrLong}`
+      : 'Brak opisu zadania';
 
-  const assignedRender =
-    taskDocument.assigned.length !== 0
-      ? taskDocument.assigned
-          .map(person => {
-            return `
+    const assignedRender =
+      taskDocument.assigned.length !== 0
+        ? taskDocument.assigned
+            .map(person => {
+              return `
         <li>${person}</li>
       `;
-          })
-          .join('')
-      : 'Brak';
+            })
+            .join('')
+        : 'Brak';
 
-  // Sets proper values into a modal window
-  descrShort.textContent = taskDocument.descrShort;
-  creator.textContent = `${taskDocument.creator}`;
-  dateStart.textContent = `${startDate.getDate() + 1}.${startDate.getMonth() +
-    1}.${startDate.getFullYear()}`;
-  assigned.innerHTML = assignedRender;
-  dateEnd.textContent =
-    endDate !== 'nieokreślone'
-      ? `${endDate.getDate() + 1}.${endDate.getMonth() +
-          1}.${endDate.getFullYear()}`
-      : `${endDate}`;
-  descrLong.innerHTML = descrLongRender;
-  weight.textContent = taskDocument.weight;
+    // Sets proper values into a modal window
+    descrShort.textContent = taskDocument.descrShort;
+    creator.textContent = `${taskDocument.creator}`;
+    dateStart.textContent = `${startDate.getDate() + 1}.${startDate.getMonth() +
+      1}.${startDate.getFullYear()}`;
+    assigned.innerHTML = assignedRender;
+    dateEnd.textContent =
+      endDate !== 'nieokreślone'
+        ? `${endDate.getDate() + 1}.${endDate.getMonth() +
+            1}.${endDate.getFullYear()}`
+        : `${endDate}`;
+    descrLong.innerHTML = descrLongRender;
+    weight.textContent = taskDocument.weight;
 
-  //Start button value
-  console.log(taskDocument.status);
-  taskDocument.status === true
-    ? (startBtn.textContent = 'Zamknij')
-    : (startBtn.textContent = 'Rozpocznij');
+    //Start button value
+    console.log(taskDocument.status);
+    taskDocument.status === true
+      ? (startBtn.textContent = 'Zamknij')
+      : (startBtn.textContent = 'Rozpocznij');
 
-  // Makes modal window visible
-  modalWrapper.style.display = 'block';
+    // Makes modal window visible
+    modalWrapper.style.display = 'block';
+  }
 });
 
 // Starts working on a task
