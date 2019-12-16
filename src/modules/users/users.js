@@ -1,8 +1,8 @@
 import { userInfo } from "os";
 
 const urlServer = 'http://127.0.0.1:3000/api/';
-var id = '';
-var token = '';
+// var id = '';
+// var token = '';
 
 export const login = async function(city){
     $('.showhome').hide();
@@ -73,7 +73,21 @@ function getToken() {
 
     fetch(urlServer+'auth', otherParam)
     .then(data => data.json())
-    .then(data => {console.log(data.token); token = data.token; id = data.id})
+    .then(data => {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        let name = JSON.parse(localStorage.getItem('user')).name;
+        let surname = JSON.parse(localStorage.getItem('user')).surname;
+        document.getElementById('user-email').innerText = `${name} ${surname} `;
+        document.getElementById('login').style.display = "none";
+        document.getElementById('register').style.display = "none";    
+        document.getElementById('member-nav').style.display = "unset";
+        document.getElementById('project-nav').style.display = "unset";
+        document.getElementById('tasks-nav').style.display = "unset";
+        document.getElementById('user-email-nav').style.display = "unset";
+        document.getElementById("list-projects").click();
+
+    })
     .catch(err => {console.log(err);});
 }
 
