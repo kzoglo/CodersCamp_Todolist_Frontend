@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css"
     />
-    <link rel="stylesheet" href="addTask.css" />
+    <link rel="stylesheet" href="./modules/tasks/templates/addTask/addTask.css" />
   </head>
 
   <body>
@@ -25,7 +25,7 @@
       </div>
 
       <div class="task-elements-wrapper">
-        <form action="/api/tasks/" method="POST" class="task-elements-form">
+        <form class="task-elements-form">
           <div class="task-elements">
             <div class="data-module">
               <label
@@ -123,6 +123,6 @@
         </form>
       </div>
     </div>
-    <script src="./addTask.js"></script>
+    <script src="./modules/tasks/templates/addTask/addTask.js"></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 const path = require('path');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -22,65 +22,64 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [
-            'style-loader',
-            'css-loader'
-        ],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.html$/,
-        use: [ {
-          loader: 'html-loader'
-        }],
+        use: [
+          {
+            loader: 'html-loader'
+          }
+        ]
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'file-loader',
-          },
-        ],
+            loader: 'file-loader'
+          }
+        ]
       },
       {
         test: /\.mst$/,
         use: [
-            {
-                loader: 'mustache-loader'
-            },
+          {
+            loader: 'mustache-loader'
+          }
         ]
-    }
+      }
     ]
   },
   plugins: [
     //user
     new HtmlWebpackPlugin({
-        template: './src/modules/users/templates/login.mst',
+      template: './src/modules/users/templates/login.mst'
     }),
     new HtmlWebpackPlugin({
-      template: './src/modules/users/templates/register.mst',
+      template: './src/modules/users/templates/register.mst'
     }),
     new HtmlWebpackPlugin({
-      template: './src/modules/users/templates/showDetails.mst',
+      template: './src/modules/users/templates/showDetails.mst'
     }),
     //tasks
     new HtmlWebpackPlugin({
-      template: './src/modules/tasks/templates/addTask.mst',
+      template: './src/modules/tasks/templates/addTask/addTask.mst'
     }),
     new HtmlWebpackPlugin({
-      template: './src/modules/tasks/templates/showTasks.mst',
+      template: './src/modules/tasks/templates/tasksList/tasksList.mst'
     }),
     //projects
     new HtmlWebpackPlugin({
-      template: './src/modules/projects/templates/addProject.mst',
+      template: './src/modules/projects/templates/addProject.mst'
     }),
     //members
     new HtmlWebpackPlugin({
-      template: './src/modules/members/templates/addMember.mst',
+      template: './src/modules/members/templates/addMember.mst'
     }),
-    //index 
+    //index
     new HtmlWebpackPlugin({
-        template: './src/index.html',
-    }),
+      template: './src/index.html'
+    })
   ],
   devServer: {
     port: 9000

@@ -1,4 +1,4 @@
-const form = document.querySelector('.task-elements');
+const form = document.querySelector('.task-elements-form');
 const loader = document.querySelector('.ui.active');
 const validationInfo = document.querySelector('.validation-info');
 const inputDescr = document.querySelector('.description-short-input');
@@ -24,6 +24,27 @@ inputDescr.addEventListener('invalid', e => {
 
 form.addEventListener('submit', e => {
   e.preventDefault();
+
+  const formData = new FormData(form);
+  const searchParams = new URLSearchParams();
+
+  for (const pair of formData) {
+    searchParams.append(pair[0], pair[1]);
+  }
+
+  fetch('http://127.0.0.1:3000/api/tasks/', {
+    method: 'POST',
+    body: searchParams
+  })
+    .then(resp => {
+      return resp.text();
+    })
+    .then(resp => {
+      console.log(resp);
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
 });
 
 /***** Temporarly artificial loading page -> later it's going to fetch friends from db *****/

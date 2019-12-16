@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Tasks List</title>
-    <link rel="stylesheet" href="taskList.css" />
-    <link rel="stylesheet" href="../modal/modal.css" />
+    <link rel="stylesheet" href="./modules/tasks/templates/tasksList/tasksList.css" />
+    <link rel="stylesheet" href="./modules/tasks/templates/task_details_modal/modal.css" />
   </head>
   <body>
     <div class="page-wrapper">
@@ -38,7 +38,7 @@
           <div class="assigned-list-wrapper">
             <p class="modal-title">Osoby przypisane do zadania:</p>
             <ul class="assigned-list">
-              <li>kamil dupa</li>
+              <li>kamil</li>
             </ul>
           </div>
         </div>
@@ -57,6 +57,6 @@
       </div>
     </div>
 
-    <script src="tasksList.js"></script>
+    <script src="./modules/tasks/templates/tasksList/tasksList.js"></script>
   </body>
 </html>

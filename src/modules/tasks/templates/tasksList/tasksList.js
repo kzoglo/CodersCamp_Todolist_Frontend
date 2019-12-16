@@ -13,6 +13,7 @@ const startBtn = document.querySelector('.start-task-btn');
 const tasksListContainer = document.querySelector('.tasks-container');
 let documents; // Gets list of tasks on page load
 let taskDocument; // Currently displayed task
+const URL = 'http://127.0.0.1:3000/api/tasks';
 
 /****** ASSISTIVE FUNCTIONS ******/
 const renderTask = tasks => {
@@ -33,7 +34,7 @@ const renderTask = tasks => {
 };
 
 const deleteTask = async id => {
-  const erase = await fetch(`http://127.0.0.1:3000/api/tasks/${id}`, {
+  const erase = await fetch(`${URL}/${id}`, {
     method: 'DELETE'
   });
   const deleted = await erase.json();
@@ -42,7 +43,7 @@ const deleteTask = async id => {
 
 /****** FETCHING DATA ******/
 // Loads documents on page start
-const request = fetch('http://127.0.0.1:3000/api/tasks', {
+const request = fetch(`${URL}`, {
   method: 'GET'
 });
 
@@ -140,8 +141,8 @@ startBtn.addEventListener('click', async e => {
     if (!taskDocument.status) {
       // Makes a PUT request in order to update db (changes status of task)
       const id = modalWrapper.dataset.id;
-      console.log(`http://127.0.0.1:3000/api/tasks/${id}`);
-      const response = await fetch(`http://127.0.0.1:3000/api/tasks/${id}`, {
+      console.log(`${URL}/${id}`);
+      const response = await fetch(`${URL}/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

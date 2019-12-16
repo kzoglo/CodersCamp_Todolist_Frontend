@@ -1,6 +1,6 @@
 body::after {
   content: '';
-  background: url('./assets/images/taskBackground.jpg');
+  background: url('/src/assets/img/taskBackground.jpg');
   background-size: cover;
   opacity: 0.5;
   top: 0;
