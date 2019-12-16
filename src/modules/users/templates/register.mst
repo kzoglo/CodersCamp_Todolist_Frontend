@@ -1,3 +1,54 @@
 <div class="container">
-    <h1>register</h1>
+    <br>
+    <div class="icon-circle">
+    <i class="fa fa-user-plus"></i>
+    </div>
+    
+    {{! <label for="basic-url">Your vanity URL</label> }}
+    <br>
+    <br>
+    <br>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Imię *</span>
+        </div>
+        <input type="text" class="form-control" id="name" aria-describedby="name">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Nazwisko *</span>
+        </div>
+        <input type="text" class="form-control" id="surname" aria-describedby="surname">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Email *</span>
+        </div>
+        <input type="email" class="form-control" id="email" aria-describedby="email">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Hasło *</span>
+        </div>
+        <input type="password" class="form-control" id="password" aria-describedby="password">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Powtórz hasło *</span>
+        </div>
+        <input type="password" class="form-control" id="password2" aria-describedby="password2">
+    </div>
+    <div id='msg'></div>
+
+    <br>
+    <button type="button" class="btn btn-dark" id="register-btn"> &nbsp;&nbsp;Zarejestruj&nbsp;&nbsp;</button>
+    <br>
+    <br>
+
+
+    <div>* pole wymagane</div>
 </div>
