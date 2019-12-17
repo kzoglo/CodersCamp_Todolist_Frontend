@@ -1,16 +1,16 @@
 /*** This crashes app  ***/
-/* .content::after {
+.content::after {
   content: '';
   background: url('/src/assets/img/taskBackground.jpg');
   background-size: cover;
-  opacity: 0.5;
+  height: 100%;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   position: fixed;
   z-index: -1;
-} */
+}
 
 input,
 select,
@@ -29,7 +29,6 @@ textarea:focus {
 .title {
   font-size: 4rem;
   padding: 20px;
-  background: lightblue;
   text-align: center;
   text-shadow: 5px 5px 5px lightcyan;
   color: #0f1233d4;
