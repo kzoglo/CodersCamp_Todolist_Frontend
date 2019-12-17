@@ -10,6 +10,7 @@ body {
     rgba(249, 248, 246, 1) 100%
   );
   margin-bottom: 16vh;
+  height: 100vh;
 }
 
 .content {
@@ -31,6 +32,11 @@ body {
   position: relative;
   text-align: center;
   opacity: 0.8;
+}
+
+.text-home {
+  position: relative;
+  color: rgb(190, 190, 190);
 }
 
 .text-home {
