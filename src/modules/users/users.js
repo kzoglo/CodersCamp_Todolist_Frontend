@@ -1,4 +1,4 @@
-import { userInfo } from 'os';
+// import { userInfo } from 'os';
 
 const urlServer = 'http://127.0.0.1:3000/api/';
 // var id = '';

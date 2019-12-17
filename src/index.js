@@ -1,5 +1,5 @@
-import '../src/style.css';
-import 'babel-polyfill';
+// import '../src/style.css';
+// import 'babel-polyfill';
 import { login, register, showDetails } from './modules/users/users.js';
 import { addProject } from './modules/projects/projects.js';
 import { addMember } from './modules/members/members.js';
