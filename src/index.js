@@ -29,7 +29,6 @@ window.onload = function() {
 document.getElementById('login').addEventListener('click', login);
 document.getElementById('register').addEventListener('click', register);
 document.getElementById('show-details').addEventListener('click', showDetails);
-
 // //projects
 document.getElementById('add-project').addEventListener('click', addProject);
 
@@ -37,13 +36,15 @@ document.getElementById('add-project').addEventListener('click', addProject);
 document.getElementById('add-task').addEventListener('click', addTask);
 document.getElementById('list-tasks').addEventListener('click', tasksList);
 
-//members
-document.getElementById('add-member').addEventListener('click', addMember);
 
 document.getElementById('homepage').addEventListener('click', function() {
   $('.showhome').show();
   $('.content').hide();
 });
+
+document.getElementById('icon-foot').addEventListener('click', function() {
+    window.open('https://github.com/goraklaudia/CC_toDoList_frontend', '_blank');
+})
 
 document.getElementById('logout').addEventListener('click', function() {
   localStorage.removeItem('token');

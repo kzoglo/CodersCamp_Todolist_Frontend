@@ -23,3 +23,31 @@
 .input-group-text {
     width: 130px;
 }
+
+.details-grid {
+    grid-template-columns: auto auto;
+    display: grid;
+    width: 100%;
+    row-gap: 1%;
+    padding: 1% 10%;
+}
+
+.details-grid> h4 {
+    padding: 4px;
+    text-align: left;
+    border: 1px outset gray;
+    background: rgb(223, 223, 223);
+}
+
+.details-grid> h5 {
+    text-align: left;
+    border: 1px solid gray;
+    padding: 4px;
+    background: rgb(255, 241, 241);
+}
+
+
+.show-d-con {
+    width: 98%;
+    text-align: center;
+}
