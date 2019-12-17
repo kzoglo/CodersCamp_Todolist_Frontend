@@ -1,62 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Tasks List</title>
-    <link rel="stylesheet" href="./modules/tasks/templates/tasksList/tasksList.css" />
-    <link rel="stylesheet" href="./modules/tasks/templates/task_details_modal/modal.css" />
-  </head>
-  <body>
-    <div class="page-wrapper">
-      <h1 class="title">Lista zadań</h1>
-      <div class="tasks-container"></div>
+<div class="page-wrapper">
+  <h1 id="list-title">Lista zadań</h1>
+  <div class="tasks-container"></div>
+</div>
+
+<div id="modal-wrapper" class="modal-wrapper">
+  <div class="modal-content" data-id="">
+    <span class="closeBtn">&times;</span>
+    <h1 class="descrShort">placeholder</h1>
+
+    <div class="dateStart-wrapper modal-module-wrapper">
+      <span class="modal-title">Rozpoczęcie:</span>
+      <span class="dateStart">20.12.2000</span>
     </div>
 
-    <div id="modal-wrapper" class="modal-wrapper">
-      <div class="modal-content" data-id="">
-        <span class="closeBtn">&times;</span>
-        <h1 class="descrShort">placeholder</h1>
-
-        <div class="creator-wrapper modal-module-wrapper">
-          <span class="modal-title">Zadanie stworzył:</span>
-          <span class="creator">placeholder</span>
-        </div>
-
-        <div class="dateStart-wrapper modal-module-wrapper">
-          <span class="modal-title">Rozpoczęcie:</span>
-          <span class="dateStart">20.12.2000</span>
-        </div>
-
-        <div class="dateEnd-wrapper modal-module-wrapper">
-          <span class="modal-title">Zakończenie:</span>
-          <span class="dateEnd">23.10.2001</span>
-        </div>
-
-        <div class="assigned-wrapper modal-module-wrapper">
-          <div class="assigned-list-wrapper">
-            <p class="modal-title">Osoby przypisane do zadania:</p>
-            <ul class="assigned-list">
-              <li>kamil</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="descrLong-wrapper modal-module-wrapper">
-          <span class="modal-title">Opis zadania:</span>
-          <p class="descrLong">30.10.2010</p>
-        </div>
-
-        <div class="weight-wrapper modal-module-wrapper">
-          <span class="modal-title">Waga zadania:</span>
-          <span class="weight">placeholder</span>
-        </div>
-
-        <button class="start-task-btn">Rozpocznij</button>
-      </div>
+    <div class="dateEnd-wrapper modal-module-wrapper">
+      <span class="modal-title">Zakończenie:</span>
+      <span class="dateEnd">23.10.2001</span>
     </div>
 
-    <script src="./modules/tasks/templates/tasksList/tasksList.js"></script>
-  </body>
-</html>
+    <div class="assigned-wrapper modal-module-wrapper">
+      <span class="modal-title">Project:</span>
+      <span class="assigned-project">placeholder</span>
+    </div>
+
+    <div class="descrLong-wrapper modal-module-wrapper">
+      <span class="modal-title">Opis zadania:</span>
+      <p class="descrLong">30.10.2010</p>
+    </div>
+
+    <div class="weight-wrapper modal-module-wrapper">
+      <span class="modal-title">Waga zadania:</span>
+      <span class="weight">placeholder</span>
+    </div>
+
+    <button class="start-task-btn">Rozpocznij</button>
+  </div>
+</div>
