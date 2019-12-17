@@ -3,6 +3,7 @@ body {
     /* background-color: rgb(231, 236, 240); */
     background: linear-gradient(0deg, rgba(78,79,85,1) 0%, rgba(171,171,171,1) 34%, rgba(185,185,185,1) 56%, rgba(196,196,196,1) 76%, rgba(249,248,246,1) 100%);
     margin-bottom: 16vh;
+    height: 100vh;
 }
 
 .content{
