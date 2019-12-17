@@ -1,4 +1,4 @@
-body::after {
+.content::after {
   content: '';
   background: url('/src/assets/img/taskBackground.jpg');
   background-size: cover;
@@ -46,10 +46,10 @@ textarea:focus {
 
 .icon.tasks {
   font-size: 15em !important;
-    color: #71b7ce;
-    border: 5px solid #71b7ce;
-    border-radius: 20%;
-    box-shadow: 10px 10px 10px lightslategray, 15px 15px 15px lightslategray inset,
+  color: #71b7ce;
+  border: 5px solid #71b7ce;
+  border-radius: 20%;
+  box-shadow: 10px 10px 10px lightslategray, 15px 15px 15px lightslategray inset,
     -5px -5px 10px lightslategrey inset;
 }
 
@@ -83,6 +83,10 @@ textarea:focus {
   gap: 5px;
 }
 
+.assigned-input {
+  margin-bottom: 20px;
+}
+
 .add-task-btn {
   width: 100%;
   background: rgba(0, 0, 0, 0.66);
@@ -108,7 +112,32 @@ textarea:focus {
   margin-bottom: 150px;
 }
 
+.saved-info {
+  display: none;
+  width: 40%;
+  position: absolute;
+  bottom: -20%;
+  left: 30%;
+  z-index: 100;
+  padding: 5%;
+  background-color: #4caf50;
+  border-radius: 5%;
+  box-shadow: 5px 5px 10px black;
+  font-size: x-large;
+  text-align: center;
+}
+
+.saved-info-visible {
+  display: block;
+}
+
 /****** MEDIA QUERIES ******/
+@media screen and (min-width: 400px) {
+  .saved-info {
+    bottom: 20%;
+  }
+}
+
 @media screen and (min-width: 600px) {
   html,
   body {
@@ -132,6 +161,10 @@ textarea:focus {
     width: 40%;
     justify-self: center;
   }
+
+  .saved-info {
+    bottom: 0%;
+  }
 }
 
 @media screen and (min-width: 800px) {
@@ -141,11 +174,22 @@ textarea:focus {
 
   .task-elements {
     border: 7.5px solid #71b7ce;
+  }
+
+  .saved-info {
+    width: 30%;
+    left: 35%;
+  }
 }
 
 @media screen and (min-width: 1000px) {
   .task-elements-wrapper {
     width: 60%;
+  }
+
+  .saved-info {
+    width: 20%;
+    left: 40%;
   }
 }
 
