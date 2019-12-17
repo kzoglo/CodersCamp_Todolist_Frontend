@@ -42,6 +42,7 @@ function doAfterLog() {
 }
 
 function doAfterSD() {
+  let id = JSON.parse(localStorage.getItem('user')).id;
   fetch(urlServer + 'users/' + id, { method: 'GET' })
     .then(data => data.json())
     .then(user => {
@@ -87,7 +88,7 @@ function getToken() {
       document.getElementById('project-nav').style.display = 'unset';
       document.getElementById('tasks-nav').style.display = 'unset';
       document.getElementById('user-email-nav').style.display = 'unset';
-      document.getElementById('list-projects').click();
+      document.getElementById('list-tasks').click();
     })
     .catch(err => {
       console.log(err);
