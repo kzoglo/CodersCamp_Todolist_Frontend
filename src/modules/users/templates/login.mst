@@ -15,6 +15,7 @@
         </div>
         <input type="password" class="form-control" id="password" aria-describedby="password">
     </div>
+    <div id='msg'></div>
 
     <br>
     <button type="button" class="btn btn-dark" id="login-btn"> &nbsp;&nbsp;Zaloguj&nbsp;&nbsp;</button>

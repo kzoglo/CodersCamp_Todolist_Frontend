@@ -49,6 +49,7 @@ function doAfterSD() {
       $.get('/src/modules/users/templates/showDetails.mst', function(template) {
         const result = Mustache.to_html(template, user);
         $('.content').html(result);
+        document.getElementById('delete-user').addEventListener('click', deleteClick);
       });
     })
     .catch(err => {
@@ -77,17 +78,24 @@ function getToken() {
   fetch(urlServer + 'auth', otherParam)
     .then(data => data.json())
     .then(data => {
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-      let name = JSON.parse(localStorage.getItem('user')).name;
-      let surname = JSON.parse(localStorage.getItem('user')).surname;
-      document.getElementById('user-email').innerText = `${name} ${surname} `;
-      document.getElementById('login').style.display = 'none';
-      document.getElementById('register').style.display = 'none';
-      document.getElementById('project-nav').style.display = 'unset';
-      document.getElementById('tasks-nav').style.display = 'unset';
-      document.getElementById('user-email-nav').style.display = 'unset';
-      document.getElementById('list-tasks').click();
+      console.log(data)
+      if(data.msg === undefined){
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        let name = JSON.parse(localStorage.getItem('user')).name;
+        let surname = JSON.parse(localStorage.getItem('user')).surname;
+        document.getElementById('user-email').innerText = `${name} ${surname} `;
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('register').style.display = 'none';
+        document.getElementById('project-nav').style.display = 'unset';
+        document.getElementById('tasks-nav').style.display = 'unset';
+        document.getElementById('user-email-nav').style.display = 'unset';
+        document.getElementById('list-tasks').click();
+      }
+      else {
+        document.getElementById('msg').innerText = data.msg;
+      }
+
     })
     .catch(err => {
       console.log(err);
@@ -136,5 +144,24 @@ function postUser() {
       .catch(err => {
         console.log(err.msg);
       });
+  }
+}
+
+function doAfterDELETE() {
+  let id = JSON.parse(localStorage.getItem('user')).id;
+  fetch(urlServer + 'users/' + id, { method: 'DELETE' })
+    .then(data => data.json())
+    .then(user => {
+      document.getElementById('logout').click();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+function deleteClick() {
+  var r = confirm("Czy napewno chcesz usunąć konto?");
+  if (r == true) {
+    doAfterDELETE()
   }
 }

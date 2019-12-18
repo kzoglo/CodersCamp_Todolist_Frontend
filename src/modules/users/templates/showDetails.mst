@@ -11,5 +11,8 @@
         <h4>Email:</h4>
         <h5>{{email}}</h5>
     </div>
+    <br>
+    <br>
+    <button type="button" class=" btn btn-danger" id="delete-user">Usuń konto</button>
 </div>
 
