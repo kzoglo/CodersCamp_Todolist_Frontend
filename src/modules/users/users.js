@@ -84,7 +84,6 @@ function getToken() {
       document.getElementById('user-email').innerText = `${name} ${surname} `;
       document.getElementById('login').style.display = 'none';
       document.getElementById('register').style.display = 'none';
-      document.getElementById('member-nav').style.display = 'unset';
       document.getElementById('project-nav').style.display = 'unset';
       document.getElementById('tasks-nav').style.display = 'unset';
       document.getElementById('user-email-nav').style.display = 'unset';
@@ -129,9 +128,13 @@ function postUser() {
       .then(data => data.json())
       .then(user => {
         console.log(user);
+        if(msg === undefined)
+          document.getElementById('login').click();
+        else 
+          document.getElementById('msg').innerText = user.msg;
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.msg);
       });
   }
 }

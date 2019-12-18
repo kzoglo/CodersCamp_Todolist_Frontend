@@ -1,15 +1,15 @@
-<div class="show-d-con ">
-<br>
-    <i class="fa fa-vcard"></i>
-    <br>
+<div class="show-d-con">
+  <h2 class="title">Moje dane <i class="fa fa-vcard"></i></h2>
+    
     <br>
     <br>
     <div class="details-grid ">
-        <h4>Imię: </h4>
+        <h4>Imię:</h4>
         <h5>{{name}}</h5>
         <h4>Nazwisko:</h4>
         <h5>{{surname}}</h5>
-        <h4>Email: </h4>
+        <h4>Email:</h4>
         <h5>{{email}}</h5>
     </div>
 </div>
+

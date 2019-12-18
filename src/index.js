@@ -12,7 +12,6 @@ window.onload = function() {
     localStorage.getItem('token') === '' ||
     localStorage.getItem('token') === null
   ) {
-    document.getElementById('member-nav').style.display = 'none';
     document.getElementById('project-nav').style.display = 'none';
     document.getElementById('tasks-nav').style.display = 'none';
     document.getElementById('user-email-nav').style.display = 'none';
@@ -51,7 +50,6 @@ document.getElementById('logout').addEventListener('click', function() {
   localStorage.removeItem('user');
   document.getElementById('login').style.display = 'unset';
   document.getElementById('register').style.display = 'unset';
-  document.getElementById('member-nav').style.display = 'none';
   document.getElementById('project-nav').style.display = 'none';
   document.getElementById('tasks-nav').style.display = 'none';
   document.getElementById('user-email-nav').style.display = 'none';

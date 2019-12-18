@@ -1,7 +1,5 @@
 <div class="container">
-    <br>
-    <i class="fa fa-user"></i>
-    <br>
+    <h2 class="title">Logowanie <i class="fa fa-user"></i></h2>
     <br>
     <br>
     <div class="input-group mb-3">
