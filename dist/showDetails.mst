@@ -1,0 +1,19 @@
+<div class="show-d-con">
+  <h2 class="title">Moje dane <i class="fa fa-vcard"></i></h2>
+    
+    <br>
+    <br>
+    <div class="details-grid ">
+        <h4>Imię:</h4>
+        <h5></h5>
+        <h4>Nazwisko:</h4>
+        <h5></h5>
+        <h4>Email:</h4>
+        <h5></h5>
+    </div>
+    <br>
+    <br>
+    <button type="button" class=" btn btn-danger" id="delete-user">Usuń konto</button>
+</div>
+
+<script type="text/javascript" src="bundle.js"></script>

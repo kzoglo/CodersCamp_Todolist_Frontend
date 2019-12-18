@@ -20,6 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/plugin-transform-regenerator": "^7.7.5",
+    "@babel/plugin-transform-runtime": "^7.7.6",
     "@babel/preset-env": "^7.7.6",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.1",
@@ -33,7 +34,10 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.7.6",
     "babel-polyfill": "^6.26.0",
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "jquery": "^3.4.1",
+    "mustache": "^3.1.0"
   }
 }

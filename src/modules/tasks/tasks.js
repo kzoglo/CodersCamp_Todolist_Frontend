@@ -7,7 +7,7 @@ export const addTask = async function(city) {
   $('.showhome').hide();
   $('.content').show();
 
-  $.get('/src/modules/tasks/templates/addTask/addTask.mst', function(template) {
+  $.get('/addTask.mst', function(template) {
     const result = Mustache.to_html(template);
     $('.content').html(result);
     loadingPage();
@@ -20,9 +20,7 @@ export const tasksList = async function(city) {
   $('.showhome').hide();
   $('.content').show();
 
-  $.get('/src/modules/tasks/templates/tasksList/tasksList.mst', function(
-    template
-  ) {
+  $.get('/tasksList.mst', function(template) {
     const result = Mustache.to_html(template);
     $('.content').html(result);
     renderTasksList();

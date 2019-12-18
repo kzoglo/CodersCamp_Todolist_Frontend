@@ -1,4 +1,10 @@
 // import { userInfo } from 'os';
+// import loginMst from './templates/login.mst';
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
+
+import Mustache from 'mustache';
 
 const urlServer = 'http://127.0.0.1:3000/api/';
 // var id = '';
@@ -7,7 +13,7 @@ const urlServer = 'http://127.0.0.1:3000/api/';
 export const login = async function(city) {
   $('.showhome').hide();
   $('.content').show();
-  $.get('/src/modules/users/templates/login.mst', function(template) {
+  $.get('/login.mst', function(template) {
     const result = Mustache.to_html(template);
     $('.content').html(result);
     doAfterLog();
@@ -17,7 +23,7 @@ export const login = async function(city) {
 export const register = async function(city) {
   $('.showhome').hide();
   $('.content').show();
-  $.get('/src/modules/users/templates/register.mst', function(template) {
+  $.get('/register.mst', function(template) {
     const result = Mustache.to_html(template);
     $('.content').html(result);
     doAfterReg();
@@ -46,10 +52,12 @@ function doAfterSD() {
   fetch(urlServer + 'users/' + id, { method: 'GET' })
     .then(data => data.json())
     .then(user => {
-      $.get('/src/modules/users/templates/showDetails.mst', function(template) {
+      $.get('/showDetails.mst', function(template) {
         const result = Mustache.to_html(template, user);
         $('.content').html(result);
-        document.getElementById('delete-user').addEventListener('click', deleteClick);
+        document
+          .getElementById('delete-user')
+          .addEventListener('click', deleteClick);
       });
     })
     .catch(err => {
@@ -78,8 +86,8 @@ function getToken() {
   fetch(urlServer + 'auth', otherParam)
     .then(data => data.json())
     .then(data => {
-      console.log(data)
-      if(data.msg === undefined){
+      console.log(data);
+      if (data.msg === undefined) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         let name = JSON.parse(localStorage.getItem('user')).name;
@@ -91,11 +99,9 @@ function getToken() {
         document.getElementById('tasks-nav').style.display = 'unset';
         document.getElementById('user-email-nav').style.display = 'unset';
         document.getElementById('list-tasks').click();
-      }
-      else {
+      } else {
         document.getElementById('msg').innerText = data.msg;
       }
-
     })
     .catch(err => {
       console.log(err);
@@ -136,10 +142,8 @@ function postUser() {
       .then(data => data.json())
       .then(user => {
         console.log(user);
-        if(msg === undefined)
-          document.getElementById('login').click();
-        else 
-          document.getElementById('msg').innerText = user.msg;
+        if (msg === undefined) document.getElementById('login').click();
+        else document.getElementById('msg').innerText = user.msg;
       })
       .catch(err => {
         console.log(err.msg);
@@ -160,8 +164,8 @@ function doAfterDELETE() {
 }
 
 function deleteClick() {
-  var r = confirm("Czy napewno chcesz usunąć konto?");
+  var r = confirm('Czy napewno chcesz usunąć konto?');
   if (r == true) {
-    doAfterDELETE()
+    doAfterDELETE();
   }
 }
