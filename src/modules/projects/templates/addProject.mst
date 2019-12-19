@@ -1,3 +1,26 @@
 <div class="container">
-    <h1>add Project</h1>
+    <div class="col-xl">
+        <h1>Nowy projekt</h1>
+        <form id="form" >
+            <div class="form-group">
+                <label for="proj_name">Nazwa projektu</label>
+                <input id="project" class="form-control" type="text" name="proj_name">
+            </div>
+            <div class="form-group">
+                <label for="proj_deadline">Deadline</label>
+                <input id="deadline" class="form-control" type="date" name="proj_deadline">
+            </div>
+            <div class="form-group">
+                <input id="xSubmit" class="form-control btn btn-dark" type="submit" value="Dodaj projekt">
+            </div>
+        </form>
+    </div>
+    <hr>
+    <div>
+        <h1>Twoje projekty</h1>
+        <div class="list-group">
+            
+
+        </div>
+    </div>
 </div>
