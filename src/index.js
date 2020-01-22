@@ -2,25 +2,10 @@
 // import './modules/tasks/tasks.css';
 // import './modules/users/users.css';
 
-import addPng from './assets/img/add.png';
-import managePng from './assets/img/manage.png';
-import timePng from './assets/img/time.png';
-import githubPng from './assets/img/github.png';
-
 import { login, register, showDetails } from './modules/users/users.js';
 import { addProject } from './modules/projects/projects.js';
 // import { addMember } from './modules/members/members.js';
 import { addTask, tasksList } from './modules/tasks/tasks.js';
-
-const add = document.querySelector('.add');
-const manage = document.querySelector('.manage');
-const time = document.querySelector('.time');
-const iconFoot = document.getElementById('icon-foot');
-
-add.src = addPng;
-manage.src = managePng;
-time.src = timePng;
-iconFoot.src = githubPng;
 
 window.onload = function() {
   console.log(this.localStorage.getItem('token'));

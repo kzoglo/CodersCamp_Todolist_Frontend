@@ -1,6 +1,7 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -34,12 +35,14 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(svg|png|jpg|gif)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'assets/img'
+              name: '[name].[hash].[ext]',
+              esModule: false,
+              outputPath: 'assets/img/'
             }
           }
         ]
@@ -63,20 +66,21 @@ module.exports = {
       },
       {
         from: 'src/modules/tasks/templates/addTask/addTask.mst',
-        to: 'src/modules/tasks/templates/addTask/',
+        to: 'modules/tasks/templates/addTask/',
         flatten: true
       },
       {
         from: 'src/modules/tasks/templates/tasksList/tasksList.mst',
-        to: 'src/modules/tasks/templates/tasksList/',
+        to: 'modules/tasks/templates/tasksList/',
         flatten: true
       },
       {
         from: 'src/modules/users/templates/*.mst',
-        to: 'src/modules/users/templates/',
+        to: 'modules/users/templates/',
         flatten: true
       }
-    ])
+    ]),
+    new CleanWebpackPlugin()
   ],
   devServer: {
     port: 9000
