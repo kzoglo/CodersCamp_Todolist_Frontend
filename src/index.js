@@ -9,7 +9,7 @@ import githubPng from './assets/img/github.png';
 
 import { login, register, showDetails } from './modules/users/users.js';
 import { addProject } from './modules/projects/projects.js';
-import { addMember } from './modules/members/members.js';
+// import { addMember } from './modules/members/members.js';
 import { addTask, tasksList } from './modules/tasks/tasks.js';
 
 const add = document.querySelector('.add');
