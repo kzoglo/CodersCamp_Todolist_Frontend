@@ -89,20 +89,14 @@
         </div>
 
         <div class="data-module">
-          <label for="assigned-input" class="assigned-label"
+          <label for="assigned-select" class="assigned-label"
             >Przypisz zadanie do projektu
           </label>
-          <input
-            list="projects"
-            name="project"
-            id="assigned-input"
-            class="assigned-input"
-          >
-          <datalist id="projects">
-            <option value="kamil">
-            <option value="marek">
-            <option value="janek">
-          </datalist>
+          <select name="project"
+            id="assigned-select"
+            class="assigned-select projects">
+            
+          </select>
           <div class="saved-info"></div>
         </div>
       </div>

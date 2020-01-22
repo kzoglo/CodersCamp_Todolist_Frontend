@@ -7,8 +7,8 @@ export const addTask = async function(city) {
   $('.showhome').hide();
   $('.content').show();
 
-  $.get('/addTask.mst', function(template) {
-    const result = Mustache.to_html(template);
+  $.get('/modules/tasks/templates/addTask/addTask.mst', function(template) {
+    const result = Mustache.render(template);
     $('.content').html(result);
     loadingPage();
     validationInput();
@@ -20,7 +20,7 @@ export const tasksList = async function(city) {
   $('.showhome').hide();
   $('.content').show();
 
-  $.get('/tasksList.mst', function(template) {
+  $.get('/modules/tasks/templates/tasksList/tasksList.mst', function(template) {
     const result = Mustache.to_html(template);
     $('.content').html(result);
     renderTasksList();
@@ -38,8 +38,7 @@ function createTask() {
 function loadingPage() {
   const wrapper = document.querySelector('.wrapper');
   const loader = document.querySelector('.ui.active');
-  const projectsListWrapper = document.getElementById('projects');
-  const projectsListInput = document.getElementById('assigned-input');
+  const projectsListSelect = document.getElementById('assigned-select');
   let userId = JSON.parse(localStorage.getItem('user')).id;
 
   fetch(`http://127.0.0.1:3000/api/projects/${userId}`)
@@ -52,14 +51,14 @@ function loadingPage() {
         const projectsList = resp
           .map(project => {
             return `
-            <option value="${project.name}">
+            <option value="${project.name}">${project.name}</option>
           `;
           })
           .join('');
 
-        projectsListWrapper.innerHTML = projectsList;
+        projectsListSelect.innerHTML = projectsList;
       } else {
-        projectsListInput.setAttribute('disabled', 'true');
+        projectsListSelect.setAttribute('disabled', 'true');
       }
     })
     .catch(err => {

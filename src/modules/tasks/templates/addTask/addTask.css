@@ -72,7 +72,7 @@ textarea:focus {
   border-radius: 3%;
   box-shadow: 10px 10px 10px lightslategray, 15px 15px 15px lightslategray inset,
     -5px -5px 10px lightslategrey inset;
-  color: rgba(0, 0, 0, 0.82);
+  color: black;
   font-family: monospace;
   text-shadow: 2px 2px 2px white;
 }
@@ -83,7 +83,7 @@ textarea:focus {
   gap: 5px;
 }
 
-.assigned-input {
+.assigned-select {
   margin-bottom: 20px;
 }
 
