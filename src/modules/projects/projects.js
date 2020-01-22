@@ -1,16 +1,22 @@
+const URL = 'http://127.0.0.1:3000';
 const apiPath = '/api/projects';
+const appName = '';
 let projectVal = '';
 let deadlineVal = '';
 let ownerVal;
 
-if (JSON.parse(localStorage.getItem('user')) !== null) {
-  ownerVal = JSON.parse(localStorage.getItem('user')).id;
+function changeOwnerVal() {
+  if (JSON.parse(localStorage.getItem('user')) !== null) {
+    ownerVal = JSON.parse(localStorage.getItem('user')).id;
+  }
 }
 
 export const addProject = function() {
   $('.showhome').hide();
   $('.content').show();
-  $.get('/modules/projects/templates/addProject.mst', function(template) {
+  $.get(`${appName}/modules/projects/templates/addProject.mst`, function(
+    template
+  ) {
     const result = Mustache.to_html(template);
     $('.content').html(result);
     afterAddProject();
@@ -34,12 +40,14 @@ function afterAddProject() {
     deadlineVal = e.target.value;
   });
 
+  changeOwnerVal();
   getRequest(ownerVal);
 }
 
 function onSubmitClick(e) {
   e.preventDefault();
 
+  changeOwnerVal();
   const response = postRequest(projectVal, deadlineVal, ownerVal);
   console.log(response);
 
@@ -153,7 +161,7 @@ async function postRequest(p, d, o) {
     method: 'POST'
   };
 
-  fetch(`http://localhost:3000${apiPath}`, req)
+  fetch(`${URL}${apiPath}`, req)
     .then(data => data.json())
     .then(proj => console.log(proj))
     .catch(err => console.log(err));
@@ -184,14 +192,15 @@ function putRequest(id, mode) {
 
   // console.log(req)
 
-  fetch(`http://localhost:3000${apiPath}/${id}`, req)
+  fetch(`${URL}${apiPath}/${id}`, req)
     .then(data => data.json())
     .then(proj => console.log(proj))
     .catch(err => console.log(err));
 }
 
 function getRequest(ownerVal) {
-  fetch(`http://localhost:3000${apiPath}/${ownerVal}`)
+  console.log(ownerVal);
+  fetch(`${URL}${apiPath}/${ownerVal}`)
     .then(data => data.json())
     .then(project => populateList(project))
     .catch(err => {
