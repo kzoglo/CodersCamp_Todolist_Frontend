@@ -1,3 +1,7 @@
+@import './modules/projects/projects.css';
+@import './modules/tasks/tasks.css';
+@import './modules/users/users.css';
+
 body {
   color: black;
   /* background-color: rgb(231, 236, 240); */
@@ -24,7 +28,7 @@ body {
 }
 
 .back-home {
-  background-image: url('/list2.jpg');
+  background-image: url('./assets/img/list2.jpg');
   height: 500px;
   background-position: center;
   background-repeat: no-repeat;

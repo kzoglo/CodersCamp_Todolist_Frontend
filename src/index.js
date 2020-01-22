@@ -1,6 +1,4 @@
-// import './style.css';
-// import './modules/tasks/tasks.css';
-// import './modules/users/users.css';
+import './style.css';
 
 import { login, register, showDetails } from './modules/users/users.js';
 import { addProject } from './modules/projects/projects.js';
