@@ -1,43 +1,23 @@
-// import { userInfo } from 'os';
-// import loginMst from './templates/login.mst';
-// import $ from 'jquery';
-// window.jQuery = $;
-// window.$ = $;
-
 import * as $ from 'jquery';
 import Mustache from 'mustache';
 
 const urlServer = 'http://127.0.0.1:3000/api/';
-// var id = '';
-// var token = '';
+const appName = '';
 
 export const login = async function(city) {
   $('.showhome').hide();
   $('.content').show();
-  $.get('/modules/users/templates/login.mst', function(template) {
-    console.log('login');
+  $.get(`${appName}/modules/users/templates/login.mst`, function(template) {
     const result = Mustache.render(template);
     $('.content').html(result);
     doAfterLog();
   });
 };
 
-// function render(x) {
-//   $.get('/CodersCamp_Weather/modules/weatherFiveDays/fiveDays.mst', function(
-//     template
-//   ) {
-//     const result = Mustache.render(template, x.list[0]);
-//     $('.main').html(result);
-//     doAfter(x);
-//   });
-// }
-
 export const register = async function(city) {
-  console.log('register');
   $('.showhome').hide();
   $('.content').show();
-  $.get('/modules/users/templates/register.mst', function(template) {
-    console.log('register');
+  $.get(`${appName}/modules/users/templates/register.mst`, function(template) {
     const result = Mustache.render(template);
     $('.content').html(result);
     doAfterReg();
@@ -66,7 +46,9 @@ function doAfterSD() {
   fetch(urlServer + 'users/' + id, { method: 'GET' })
     .then(data => data.json())
     .then(user => {
-      $.get('/modules/users/templates/showDetails.mst', function(template) {
+      $.get(`${appName}/modules/users/templates/showDetails.mst`, function(
+        template
+      ) {
         const result = Mustache.to_html(template, user);
         $('.content').html(result);
         document

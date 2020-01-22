@@ -1,13 +1,16 @@
-const URL = 'http://127.0.0.1:3000/api/tasks';
+const URL = 'http://127.0.0.1:3000';
+const appName = '';
 
 let documents; // Gets list of tasks on page load
 let taskDocument; // Currently displayed task
 
-export const addTask = async function(city) {
+export const addTask = async function() {
   $('.showhome').hide();
   $('.content').show();
 
-  $.get('/modules/tasks/templates/addTask/addTask.mst', function(template) {
+  $.get(`${appName}/modules/tasks/templates/addTask/addTask.mst`, function(
+    template
+  ) {
     const result = Mustache.render(template);
     $('.content').html(result);
     loadingPage();
@@ -16,11 +19,13 @@ export const addTask = async function(city) {
   });
 };
 
-export const tasksList = async function(city) {
+export const tasksList = async function() {
   $('.showhome').hide();
   $('.content').show();
 
-  $.get('/modules/tasks/templates/tasksList/tasksList.mst', function(template) {
+  $.get(`${appName}/modules/tasks/templates/tasksList/tasksList.mst`, function(
+    template
+  ) {
     const result = Mustache.to_html(template);
     $('.content').html(result);
     renderTasksList();
@@ -41,7 +46,7 @@ function loadingPage() {
   const projectsListSelect = document.getElementById('assigned-select');
   let userId = JSON.parse(localStorage.getItem('user')).id;
 
-  fetch(`http://127.0.0.1:3000/api/projects/${userId}`)
+  fetch(`${URL}/api/projects/${userId}`)
     .then(resp => resp.json())
     .then(resp => {
       wrapper.style.display = 'block';
@@ -107,7 +112,7 @@ function postTask() {
 
       searchParams.append('creator', userId);
 
-      fetch('http://127.0.0.1:3000/api/tasks/', {
+      fetch(`${URL}/api/tasks/`, {
         method: 'POST',
         body: searchParams,
         headers: {
@@ -161,7 +166,7 @@ function renderTasksList() {
   let userId = JSON.parse(localStorage.getItem('user')).id;
   let token = localStorage.getItem('token');
 
-  const request = fetch(`${URL}/${userId}`, {
+  const request = fetch(`${URL}/api/tasks/${userId}`, {
     method: 'GET',
     headers: {
       'x-auth-token': token
@@ -180,7 +185,7 @@ function renderTasksList() {
 }
 
 const deleteTask = async id => {
-  const erase = await fetch(`${URL}/${id}`, {
+  const erase = await fetch(`${URL}/api/tasks/${id}`, {
     method: 'DELETE'
   });
   const deleted = await erase.json();
@@ -263,7 +268,7 @@ function startTask() {
       if (!taskDocument.status) {
         // Makes a PUT request in order to update db (changes status of task)
         const id = modalWrapper.dataset.id;
-        const response = await fetch(`${URL}/${id}`, {
+        const response = await fetch(`${URL}/api/tasks/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
