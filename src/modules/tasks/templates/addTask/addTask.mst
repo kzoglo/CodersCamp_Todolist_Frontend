@@ -28,9 +28,8 @@
             maxlength="50"
             required
             autofocus
-          >
-            <span class="validation-info"></span>
-        </input>
+          />
+          <span class="validation-info"></span>
         </div>
 
         <div class="data-module">
@@ -69,11 +68,11 @@
             id="category-select"
             class="category-select"
           >
-            <option value="kat1">kat1</option>
-            <option value="kat2">kat2</option>
-            <option value="kat3">kat3</option>
-            <option value="kat4">kat4</option>
-            <option value="kat5">kat5</option>
+            <option value="cat1">cat1</option>
+            <option value="cat2">cat2</option>
+            <option value="cat3">cat3</option>
+            <option value="cat4">cat4</option>
+            <option value="cat5">cat5</option>
           </select>
         </div>
 
