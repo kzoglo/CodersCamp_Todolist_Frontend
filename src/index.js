@@ -1,9 +1,8 @@
 import './style.css';
 
-import { login, register, showDetails } from './modules/users/users.js';
-import { addProject } from './modules/projects/projects.js';
-// import { addMember } from './modules/members/members.js';
-import { addTask, tasksList } from './modules/tasks/tasks.js';
+import { login, register, showDetails } from './modules/users/users';
+import { addProject } from './modules/projects/projects';
+import { addTask, tasksList } from './modules/tasks/tasks';
 
 window.onload = function() {
   console.log(this.localStorage.getItem('token'));
