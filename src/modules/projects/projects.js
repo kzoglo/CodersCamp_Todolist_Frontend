@@ -1,12 +1,16 @@
 const apiPath = '/api/projects';
 let projectVal = '';
 let deadlineVal = '';
-let ownerVal = JSON.parse(localStorage.getItem('user')).id;
+let ownerVal;
+
+if (JSON.parse(localStorage.getItem('user')) !== null) {
+  ownerVal = JSON.parse(localStorage.getItem('user')).id;
+}
 
 export const addProject = function() {
   $('.showhome').hide();
   $('.content').show();
-  $.get('/addProject.mst', function(template) {
+  $.get('/modules/projects/templates/addProject.mst', function(template) {
     const result = Mustache.to_html(template);
     $('.content').html(result);
     afterAddProject();
@@ -37,6 +41,7 @@ function onSubmitClick(e) {
   e.preventDefault();
 
   const response = postRequest(projectVal, deadlineVal, ownerVal);
+  console.log(response);
 
   if (response) addProject();
 }
