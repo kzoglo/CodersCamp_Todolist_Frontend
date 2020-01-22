@@ -7,22 +7,16 @@
     "dev": "webpack-dev-server --mode=development",
     "build": "webpack --mode=production"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/goraklaudia/CC_toDoList_frontend.git"
-  },
   "author": "Coders",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/goraklaudia/CC_toDoList_frontend/issues"
-  },
-  "homepage": "https://github.com/goraklaudia/CC_toDoList_frontend#readme",
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/plugin-transform-regenerator": "^7.7.5",
     "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/polyfill": "^7.8.3",
     "@babel/preset-env": "^7.7.6",
     "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.2.1",
     "file-loader": "^5.0.2",
     "html-loader": "^0.5.5",
@@ -35,7 +29,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.7.6",
-    "babel-polyfill": "^6.26.0",
     "faker": "^4.1.0",
     "jquery": "^3.4.1",
     "mustache": "^3.1.0"

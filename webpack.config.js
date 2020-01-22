@@ -1,5 +1,5 @@
 const path = require('path');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -11,16 +11,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
-            plugins: [
-              ['@babel/plugin-transform-runtime'],
-              ['@babel/plugin-transform-regenerator']
-            ]
+            plugins: ['@babel/plugin-transform-runtime']
           }
         }
       },
@@ -40,57 +37,46 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'file-loader'
-          }
-        ]
-      },
-      {
-        test: /\.mst$/,
-        use: [
-          {
-            loader: 'mustache-loader'
+            loader: 'file-loader',
+            options: {
+              outputPath: 'assets/img'
+            }
           }
         ]
       }
     ]
   },
   plugins: [
-    //user
-    new HtmlWebpackPlugin({
-      template: './src/modules/users/templates/login.mst',
-      filename: 'login.mst'
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/modules/users/templates/register.mst',
-      filename: 'register.mst'
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/modules/users/templates/showDetails.mst',
-      filename: 'showDetails.mst'
-    }),
-    //tasks
-    new HtmlWebpackPlugin({
-      template: './src/modules/tasks/templates/addTask/addTask.mst',
-      filename: 'addTask.mst'
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/modules/tasks/templates/tasksList/tasksList.mst',
-      filename: 'tasksList.mst'
-    }),
-    //projects
-    new HtmlWebpackPlugin({
-      template: './src/modules/projects/templates/addProject.mst',
-      filename: 'addProject.mst'
-    }),
-    //members
-    new HtmlWebpackPlugin({
-      template: './src/modules/members/templates/addMember.mst',
-      filename: 'addMember.mst'
-    }),
     //index
     new HtmlWebpackPlugin({
-      template: './src/index.html'
-    })
+      template: './src/index.html',
+      minify: {
+        removeAttributeQuotes: false,
+        collapseWhitespace: false,
+        removeComments: false
+      }
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/modules/projects/templates/addProject.mst',
+        to: 'modules/projects/templates/'
+      },
+      {
+        from: 'src/modules/tasks/templates/addTask/addTask.mst',
+        to: 'src/modules/tasks/templates/addTask/',
+        flatten: true
+      },
+      {
+        from: 'src/modules/tasks/templates/tasksList/tasksList.mst',
+        to: 'src/modules/tasks/templates/tasksList/',
+        flatten: true
+      },
+      {
+        from: 'src/modules/users/templates/*.mst',
+        to: 'src/modules/users/templates/',
+        flatten: true
+      }
+    ])
   ],
   devServer: {
     port: 9000
