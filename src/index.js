@@ -40,7 +40,10 @@ document.getElementById('homepage').addEventListener('click', function() {
 });
 
 document.getElementById('icon-foot').addEventListener('click', function() {
-  window.open('https://github.com/goraklaudia/CC_toDoList_frontend', '_blank');
+  window.open(
+    'https://github.com/kzoglo/CodersCamp_Todolist_Frontend',
+    '_blank'
+  );
 });
 
 document.getElementById('logout').addEventListener('click', function() {
