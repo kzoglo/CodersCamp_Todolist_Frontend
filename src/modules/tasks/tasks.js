@@ -26,7 +26,7 @@ export const tasksList = async function() {
   $.get(`${appName}/modules/tasks/templates/tasksList/tasksList.mst`, function(
     template
   ) {
-    const result = Mustache.to_html(template);
+    const result = Mustache.render(template);
     $('.content').html(result);
     renderTasksList();
     displayTaskDetails();

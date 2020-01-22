@@ -17,7 +17,7 @@ export const addProject = function() {
   $.get(`${appName}/modules/projects/templates/addProject.mst`, function(
     template
   ) {
-    const result = Mustache.to_html(template);
+    const result = Mustache.render(template);
     $('.content').html(result);
     afterAddProject();
   });

@@ -49,7 +49,7 @@ function doAfterSD() {
       $.get(`${appName}/modules/users/templates/showDetails.mst`, function(
         template
       ) {
-        const result = Mustache.to_html(template, user);
+        const result = Mustache.render(template, user);
         $('.content').html(result);
         document
           .getElementById('delete-user')
