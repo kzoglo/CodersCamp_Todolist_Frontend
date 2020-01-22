@@ -1,9 +1,10 @@
 // import { userInfo } from 'os';
 // import loginMst from './templates/login.mst';
-import $ from 'jquery';
-window.jQuery = $;
-window.$ = $;
+// import $ from 'jquery';
+// window.jQuery = $;
+// window.$ = $;
 
+import * as $ from 'jquery';
 import Mustache from 'mustache';
 
 const urlServer = 'http://127.0.0.1:3000/api/';
@@ -13,18 +14,31 @@ const urlServer = 'http://127.0.0.1:3000/api/';
 export const login = async function(city) {
   $('.showhome').hide();
   $('.content').show();
-  $.get('/login.mst', function(template) {
-    const result = Mustache.to_html(template);
+  $.get('/modules/users/templates/login.mst', function(template) {
+    console.log('login');
+    const result = Mustache.render(template);
     $('.content').html(result);
     doAfterLog();
   });
 };
 
+// function render(x) {
+//   $.get('/CodersCamp_Weather/modules/weatherFiveDays/fiveDays.mst', function(
+//     template
+//   ) {
+//     const result = Mustache.render(template, x.list[0]);
+//     $('.main').html(result);
+//     doAfter(x);
+//   });
+// }
+
 export const register = async function(city) {
+  console.log('register');
   $('.showhome').hide();
   $('.content').show();
-  $.get('/register.mst', function(template) {
-    const result = Mustache.to_html(template);
+  $.get('/modules/users/templates/register.mst', function(template) {
+    console.log('register');
+    const result = Mustache.render(template);
     $('.content').html(result);
     doAfterReg();
   });
@@ -52,7 +66,7 @@ function doAfterSD() {
   fetch(urlServer + 'users/' + id, { method: 'GET' })
     .then(data => data.json())
     .then(user => {
-      $.get('/showDetails.mst', function(template) {
+      $.get('/modules/users/templates/showDetails.mst', function(template) {
         const result = Mustache.to_html(template, user);
         $('.content').html(result);
         document
@@ -142,7 +156,7 @@ function postUser() {
       .then(data => data.json())
       .then(user => {
         console.log(user);
-        if (msg === undefined) document.getElementById('login').click();
+        if (user.msg === undefined) document.getElementById('login').click();
         else document.getElementById('msg').innerText = user.msg;
       })
       .catch(err => {
