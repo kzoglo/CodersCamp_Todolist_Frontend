@@ -1,6 +1,58 @@
-const URL = 'http://127.0.0.1:3000';
+import { URL } from '../tasks';
 
-/***** ADD TASK *****/
+/***** ASSISTIVE FUNCTIONS *****/
+function postTask() {
+  const form = document.querySelector('.task-elements-form');
+  const savedInfo = document.querySelector('.saved-info');
+  let userId = JSON.parse(localStorage.getItem('user')).id;
+  let token = localStorage.getItem('token');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    if (e.handled !== true) {
+      //Prevents jQuery events from firing multiple times
+      const formData = new FormData(form);
+      const searchParams = new URLSearchParams();
+
+      for (const pair of formData) {
+        searchParams.append(pair[0], pair[1]);
+      }
+
+      searchParams.append('creator', userId);
+
+      fetch(`${URL}/api/tasks/`, {
+        method: 'POST',
+        body: searchParams,
+        headers: {
+          'x-auth-token': token
+        }
+      })
+        .then(resp => {
+          return resp.text();
+        })
+        .then(resp => {
+          savedInfo.textContent = resp;
+          savedInfo.classList.add('saved-info-visible');
+          setTimeout(() => {
+            savedInfo.classList.remove('saved-info-visible');
+          }, 2000);
+        })
+        .catch(err => {
+          console.log(err.message);
+          savedInfo.textContent = err.message;
+          savedInfo.classList.add('saved-info-visible');
+          setTimeout(() => {
+            savedInfo.classList.remove('saved-info-visible');
+          }, 2000);
+        });
+
+      e.handled = true;
+    }
+  });
+}
+
+/***** EXPORTS *****/
 export const createTask = () => {
   document.querySelector('.add-task-btn').addEventListener('click', postTask);
 };
@@ -56,54 +108,3 @@ export const validationInput = () => {
     }, 2000);
   });
 };
-
-function postTask() {
-  const form = document.querySelector('.task-elements-form');
-  const savedInfo = document.querySelector('.saved-info');
-  let userId = JSON.parse(localStorage.getItem('user')).id;
-  let token = localStorage.getItem('token');
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    if (e.handled !== true) {
-      //Prevents jQuery events from firing multiple times
-      const formData = new FormData(form);
-      const searchParams = new URLSearchParams();
-
-      for (const pair of formData) {
-        searchParams.append(pair[0], pair[1]);
-      }
-
-      searchParams.append('creator', userId);
-
-      fetch(`${URL}/api/tasks/`, {
-        method: 'POST',
-        body: searchParams,
-        headers: {
-          'x-auth-token': token
-        }
-      })
-        .then(resp => {
-          return resp.text();
-        })
-        .then(resp => {
-          savedInfo.textContent = resp;
-          savedInfo.classList.add('saved-info-visible');
-          setTimeout(() => {
-            savedInfo.classList.remove('saved-info-visible');
-          }, 2000);
-        })
-        .catch(err => {
-          console.log(err.message);
-          savedInfo.textContent = err.message;
-          savedInfo.classList.add('saved-info-visible');
-          setTimeout(() => {
-            savedInfo.classList.remove('saved-info-visible');
-          }, 2000);
-        });
-
-      e.handled = true;
-    }
-  });
-}
