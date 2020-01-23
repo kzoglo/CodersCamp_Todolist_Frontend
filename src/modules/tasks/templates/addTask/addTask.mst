@@ -10,6 +10,7 @@
   </div>
 
   <div class="task-elements-wrapper">
+    <div class="saved-info"></div>
     <form class="task-elements-form">
       <div class="task-elements">
         <div class="data-module">
@@ -94,9 +95,7 @@
           <select name="project"
             id="assigned-select"
             class="assigned-select projects">
-            
           </select>
-          <div class="saved-info"></div>
         </div>
       </div>
 
