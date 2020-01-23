@@ -78,7 +78,8 @@ export const loadingPage = () => {
           })
           .join('');
 
-        projectsListSelect.innerHTML = projectsList;
+        const defaultOption = `<option value="brak">Brak</option>`;
+        projectsListSelect.innerHTML = defaultOption + projectsList;
       } else {
         projectsListSelect.setAttribute('disabled', 'true');
       }
