@@ -4,7 +4,7 @@
 </div>
 
 <div class="wrapper">
-  <h2 class="title">Nowe zadanie</h2>
+  <h2 class="newTask-title">Nowe zadanie</h2>
   <div class="task-icon">
     <i class="massive tasks icon"></i>
   </div>
