@@ -2,9 +2,12 @@
 @import './modules/tasks/tasks.css';
 @import './modules/users/users.css';
 
+html {
+  height: fit-content;
+}
+
 body {
   color: black;
-  /* background-color: rgb(231, 236, 240); */
   background: linear-gradient(
     0deg,
     rgba(78, 79, 85, 1) 0%,
@@ -13,8 +16,8 @@ body {
     rgba(196, 196, 196, 1) 76%,
     rgba(249, 248, 246, 1) 100%
   );
-  margin-bottom: 16vh;
-  height: 100%;
+  margin-bottom: 20vh;
+  height: fit-content;
 }
 
 .content {
@@ -25,6 +28,7 @@ body {
   opacity: 0.7;
   margin: auto;
   margin-top: 30px;
+  margin-bottom: 100px;
 }
 
 .back-home {
