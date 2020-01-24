@@ -100,7 +100,6 @@
       </div>
 
       <button type="submit" class="add-task-btn">Dodaj zadanie</button>
-
       <span class="required-info">* - wymagane pole</span>
     </form>
   </div>

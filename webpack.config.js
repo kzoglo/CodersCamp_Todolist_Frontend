@@ -50,7 +50,6 @@ module.exports = {
     ]
   },
   plugins: [
-    //index
     new HtmlWebpackPlugin({
       template: './src/index.html',
       minify: {

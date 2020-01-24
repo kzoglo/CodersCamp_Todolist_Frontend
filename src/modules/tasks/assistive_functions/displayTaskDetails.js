@@ -66,7 +66,7 @@ export const displayTaskDetails = () => {
       descrLong.innerHTML = descrLongRender;
       weight.textContent = taskDocument.weight;
 
-      //Start button value
+      //Starts button value
       taskDocument.status === true
         ? (startBtn.textContent = 'Zamknij')
         : (startBtn.textContent = 'Rozpocznij');
@@ -117,7 +117,7 @@ export const startTask = () => {
           ? (startBtn.textContent = 'Zamknij')
           : 'Rozpocznij';
       } else {
-        // Close modal window if task already started
+        // Close modal window if task is already started
         modalWrapper.style.display = 'none';
       }
     } catch (err) {
