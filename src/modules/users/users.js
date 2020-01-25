@@ -1,8 +1,8 @@
 import * as $ from 'jquery';
 import Mustache from 'mustache';
 
-const urlServer = 'http://127.0.0.1:3000/api/';
-const appName = '';
+const urlServer = 'https://todo-list-coderscamp.herokuapp.com/api/';
+const appName = 'CodersCamp_Todolist_Frontend';
 
 export const login = async function(city) {
   $('.showhome').hide();

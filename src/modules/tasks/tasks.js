@@ -15,10 +15,10 @@ import {
 } from './assistive_functions/displayTaskDetails';
 
 /***** GLOBAL VARIABLES *****/
-const appName = '';
+const appName = 'CodersCamp_Todolist_Frontend';
 
 /***** EXPORTS *****/
-export const URL = 'http://127.0.0.1:3000';
+export const URL = 'https://todo-list-coderscamp.herokuapp.com/';
 
 export const addTask = async function() {
   $('.showhome').hide();

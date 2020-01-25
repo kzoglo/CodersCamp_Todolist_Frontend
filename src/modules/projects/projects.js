@@ -1,6 +1,6 @@
-const URL = 'http://127.0.0.1:3000';
+const URL = 'https://todo-list-coderscamp.herokuapp.com/';
 const apiPath = '/api/projects';
-const appName = '';
+const appName = 'CodersCamp_Todolist_Frontend';
 let projectVal = '';
 let deadlineVal = '';
 let ownerVal;
