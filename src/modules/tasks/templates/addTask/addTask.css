@@ -1,6 +1,6 @@
 .content::after {
   content: '';
-  background: url('/src/assets/img/taskBackground.jpg');
+  background: url('../../../../assets/img/taskBackground.jpg');
   background-size: cover;
   height: 100%;
   top: 0;
@@ -44,7 +44,7 @@ textarea:focus {
 }
 
 .icon.tasks {
-  font-size: 15em !important;  /* !important - needed, because of 3rd party library */
+  font-size: 15em !important; /* !important - needed, because of 3rd party library */
   color: #71b7ce;
   border: 5px solid #71b7ce;
   border-radius: 20%;
