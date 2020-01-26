@@ -1,6 +1,5 @@
-const URL = 'https://todo-list-coderscamp.herokuapp.com/';
+const URL = 'https://todo-list-coderscamp.herokuapp.com';
 const apiPath = '/api/projects';
-const appName = 'CodersCamp_Todolist_Frontend';
 let projectVal = '';
 let deadlineVal = '';
 let ownerVal;
@@ -14,9 +13,7 @@ function changeOwnerVal() {
 export const addProject = function() {
   $('.showhome').hide();
   $('.content').show();
-  $.get(`${appName}/modules/projects/templates/addProject.mst`, function(
-    template
-  ) {
+  $.get(`modules/projects/templates/addProject.mst`, function(template) {
     const result = Mustache.render(template);
     $('.content').html(result);
     afterAddProject();

@@ -2,12 +2,11 @@ import * as $ from 'jquery';
 import Mustache from 'mustache';
 
 const urlServer = 'https://todo-list-coderscamp.herokuapp.com/api/';
-const appName = 'CodersCamp_Todolist_Frontend';
 
 export const login = async function(city) {
   $('.showhome').hide();
   $('.content').show();
-  $.get(`${appName}/modules/users/templates/login.mst`, function(template) {
+  $.get(`modules/users/templates/login.mst`, function(template) {
     const result = Mustache.render(template);
     $('.content').html(result);
     doAfterLog();
@@ -17,7 +16,7 @@ export const login = async function(city) {
 export const register = async function(city) {
   $('.showhome').hide();
   $('.content').show();
-  $.get(`${appName}/modules/users/templates/register.mst`, function(template) {
+  $.get(`modules/users/templates/register.mst`, function(template) {
     const result = Mustache.render(template);
     $('.content').html(result);
     doAfterReg();

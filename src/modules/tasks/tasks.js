@@ -14,19 +14,14 @@ import {
   startTask
 } from './assistive_functions/displayTaskDetails';
 
-/***** GLOBAL VARIABLES *****/
-const appName = 'CodersCamp_Todolist_Frontend';
-
 /***** EXPORTS *****/
-export const URL = 'https://todo-list-coderscamp.herokuapp.com/';
+export const URL = 'https://todo-list-coderscamp.herokuapp.com';
 
 export const addTask = async function() {
   $('.showhome').hide();
   $('.content').show();
 
-  $.get(`${appName}/modules/tasks/templates/addTask/addTask.mst`, function(
-    template
-  ) {
+  $.get(`modules/tasks/templates/addTask/addTask.mst`, function(template) {
     const result = Mustache.render(template);
     $('.content').html(result);
     loadingPage();
