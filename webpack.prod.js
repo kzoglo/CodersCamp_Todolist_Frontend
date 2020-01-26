@@ -3,6 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -11,15 +13,21 @@ module.exports = merge(common, {
     filename: '[name].[contentHash].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  optimization: {
+    minimizer: [
+      new OptimizeCssAssetsPlugin(),
+      new TerserPlugin(),
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+        minify: {
+          removeAttributeQuotes: false,
+          collapseWhitespace: false,
+          removeComments: false
+        }
+      })
+    ]
+  },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      minify: {
-        removeAttributeQuotes: true,
-        collapseWhitespace: true,
-        removeComments: false
-      }
-    }),
     new MiniCssExtractPlugin({
       filename: '[name].[contentHash].css'
     }),
