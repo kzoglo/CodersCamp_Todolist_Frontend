@@ -42,8 +42,7 @@ module.exports = {
         use: {
           loader: 'file-loader',
           options: {
-            name: '[name].[hash].[ext]',
-            esModule: false,
+            name: '[name].[hash].[ext]'
             outputPath: 'assets/img'
           }
         }
