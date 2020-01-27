@@ -45,9 +45,7 @@ function doAfterSD() {
   fetch(urlServer + 'users/' + id, { method: 'GET' })
     .then(data => data.json())
     .then(user => {
-      $.get(`${appName}/modules/users/templates/showDetails.mst`, function(
-        template
-      ) {
+      $.get(`modules/users/templates/showDetails.mst`, function(template) {
         const result = Mustache.render(template, user);
         $('.content').html(result);
         document
