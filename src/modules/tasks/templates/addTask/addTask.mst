@@ -44,7 +44,7 @@
             id="description-long-textarea"
             class="description-long-textarea"
             name="descrLong"
-            maxlength="200"
+            maxlength="255"
           ></textarea>
         </div>
 

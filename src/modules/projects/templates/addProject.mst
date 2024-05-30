@@ -14,13 +14,11 @@
                 <input id="xSubmit" class="form-control btn btn-dark" type="submit" value="Dodaj projekt">
             </div>
         </form>
+        <div id='validation_msg'></div>
     </div>
     <hr>
     <div>
         <h1>Twoje projekty</h1>
-        <div class="list-group">
-            
-
-        </div>
+        <div class="list-group"></div>
     </div>
 </div>

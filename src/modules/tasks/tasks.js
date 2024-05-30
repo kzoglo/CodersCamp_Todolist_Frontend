@@ -15,7 +15,7 @@ import {
 } from './assistive_functions/displayTaskDetails';
 
 /***** EXPORTS *****/
-export const URL = 'https://todo-list-coderscamp.herokuapp.com';
+export const URL = 'http://localhost:3000';
 
 export const addTask = async function() {
   $('.showhome').hide();

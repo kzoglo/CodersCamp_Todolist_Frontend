@@ -1,7 +1,5 @@
-const URL = 'https://todo-list-coderscamp.herokuapp.com';
+const URL = 'http://localhost:3000';
 const apiPath = '/api/projects';
-let projectVal = '';
-let deadlineVal = '';
 let ownerVal;
 
 function changeOwnerVal() {
@@ -16,27 +14,12 @@ export const addProject = function() {
   $.get(`modules/projects/templates/addProject.mst`, function(template) {
     const result = Mustache.render(template);
     $('.content').html(result);
-    afterAddProject();
+    document.getElementById('xSubmit').addEventListener('click', onSubmitClick);
+    afterRender();
   });
 };
 
-function afterAddProject() {
-  // console.log(ownerVal)
-  document.getElementById('xSubmit').addEventListener('click', onSubmitClick);
-
-  const project = document.getElementById('project');
-  const deadline = document.getElementById('deadline');
-
-  project.addEventListener('focusout', e => {
-    // console.log(e.target.value)
-    projectVal = e.target.value;
-  });
-
-  deadline.addEventListener('focusout', e => {
-    // console.log(e.target.value)
-    deadlineVal = e.target.value;
-  });
-
+function afterRender() {
   changeOwnerVal();
   getRequest(ownerVal);
 }
@@ -44,11 +27,11 @@ function afterAddProject() {
 function onSubmitClick(e) {
   e.preventDefault();
 
-  changeOwnerVal();
-  const response = postRequest(projectVal, deadlineVal, ownerVal);
-  console.log(response);
+  const projectVal = document.getElementById('project').value;
+  const deadlineVal = document.getElementById('deadline').value;
 
-  if (response) addProject();
+  changeOwnerVal();
+  postRequest(projectVal, deadlineVal, ownerVal);
 }
 
 function populateList(arr) {
@@ -61,7 +44,6 @@ function populateList(arr) {
 }
 
 function renderProjects(projects) {
-  // console.log(projects)
   const elementsArr = projects.map(p => {
     if (p.isActive) {
       const stage = p.stage === 'In progress' ? 'Niewykonany' : 'Zakończony';
@@ -117,7 +99,6 @@ function renderProjects(projects) {
 function addListeners() {
   const xs = document.querySelectorAll('.xStage');
   const xia = document.querySelectorAll('.xIsActive');
-  // console.log('addListeners()', xs)
 
   xs.forEach(btn => {
     btn.addEventListener('click', e => {
@@ -125,7 +106,6 @@ function addListeners() {
       const mode = 'STAGE';
 
       putRequest(_id, mode);
-      addProject();
     });
   });
 
@@ -135,7 +115,6 @@ function addListeners() {
       const mode = 'IS_ACTIVE';
 
       putRequest(_id, mode);
-      addProject();
     });
   });
 }
@@ -148,8 +127,6 @@ async function postRequest(p, d, o) {
     deadline: d
   };
 
-  console.log(JSON.stringify(obj));
-
   const req = {
     headers: {
       'Content-Type': 'application/json'
@@ -159,13 +136,23 @@ async function postRequest(p, d, o) {
   };
 
   fetch(`${URL}${apiPath}`, req)
-    .then(data => data.json())
-    .then(proj => console.log(proj))
-    .catch(err => console.log(err));
+    .then(data => {
+      return data.json()
+    })
+    .then(proj => {
+      if (proj.message) {
+        document.getElementById('validation_msg').innerText = proj.message;
+      } else {
+        document.getElementById('validation_msg').innerText = '';
+        afterRender()
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    });
 }
 
 function putRequest(id, mode) {
-  // console.log('putReq', mode, id)
   let obj = {};
 
   switch (mode) {
@@ -177,8 +164,6 @@ function putRequest(id, mode) {
       break;
   }
 
-  // console.log(obj)
-
   const req = {
     headers: {
       'Content-Type': 'application/json'
@@ -187,16 +172,16 @@ function putRequest(id, mode) {
     method: 'PUT'
   };
 
-  // console.log(req)
-
   fetch(`${URL}${apiPath}/${id}`, req)
     .then(data => data.json())
-    .then(proj => console.log(proj))
+    .then(proj => {
+      console.log(proj);
+      afterRender();
+    })
     .catch(err => console.log(err));
 }
 
 function getRequest(ownerVal) {
-  console.log(ownerVal);
   fetch(`${URL}${apiPath}/${ownerVal}`)
     .then(data => data.json())
     .then(project => populateList(project))

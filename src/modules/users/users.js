@@ -1,7 +1,7 @@
 import * as $ from 'jquery';
 import Mustache from 'mustache';
 
-const urlServer = 'https://todo-list-coderscamp.herokuapp.com/api/';
+export const URL = 'http://localhost:3000/api/';
 
 export const login = async function(city) {
   $('.showhome').hide();
@@ -42,7 +42,7 @@ function doAfterLog() {
 
 function doAfterSD() {
   let id = JSON.parse(localStorage.getItem('user')).id;
-  fetch(urlServer + 'users/' + id, { method: 'GET' })
+  fetch(URL + 'users/' + id, { method: 'GET' })
     .then(data => data.json())
     .then(user => {
       $.get(`modules/users/templates/showDetails.mst`, function(template) {
@@ -61,7 +61,6 @@ function doAfterSD() {
 function getToken() {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
-  console.log(` e ${email} p ${password} `);
 
   const User = {
     email: email,
@@ -76,10 +75,9 @@ function getToken() {
     method: 'POST'
   };
 
-  fetch(urlServer + 'auth', otherParam)
+  fetch(URL + 'auth', otherParam)
     .then(data => data.json())
     .then(data => {
-      console.log(data);
       if (data.msg === undefined) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
@@ -102,15 +100,11 @@ function getToken() {
 }
 
 function postUser() {
-  console.log('register');
   let name = document.getElementById('name').value;
   let surname = document.getElementById('surname').value;
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   let password2 = document.getElementById('password2').value;
-  console.log(
-    ` n ${name} s ${surname} e ${email} p ${password} p2 ${password2}`
-  );
 
   if (password !== password2) {
     document.getElementById('msg').innerText = 'Hasła muszą być identyczne.';
@@ -131,10 +125,9 @@ function postUser() {
       method: 'POST'
     };
 
-    fetch(urlServer + 'users', otherParam)
+    fetch(URL + 'users', otherParam)
       .then(data => data.json())
       .then(user => {
-        console.log(user);
         if (user.msg === undefined) document.getElementById('login').click();
         else document.getElementById('msg').innerText = user.msg;
       })
@@ -146,7 +139,7 @@ function postUser() {
 
 function doAfterDELETE() {
   let id = JSON.parse(localStorage.getItem('user')).id;
-  fetch(urlServer + 'users/' + id, { method: 'DELETE' })
+  fetch(URL + 'users/' + id, { method: 'DELETE' })
     .then(data => data.json())
     .then(user => {
       document.getElementById('logout').click();

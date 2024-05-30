@@ -5,7 +5,6 @@ import { addProject } from './modules/projects/projects';
 import { addTask, tasksList } from './modules/tasks/tasks';
 
 window.onload = function() {
-  console.log(this.localStorage.getItem('token'));
   if (
     localStorage.getItem('token') === undefined ||
     localStorage.getItem('token') === '' ||
